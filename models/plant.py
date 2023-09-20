@@ -1,5 +1,6 @@
 import datatime
 
+"""Plant model."""
 class Plant:
     def __init__(self, genus, name, type, watering, last_water=None, needs_water=None):
         self.genus = genus #enum?
