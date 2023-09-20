@@ -21,7 +21,7 @@ class Plant:
             "last_water": self.last_water,
             "needs_water": self.needs_water
         }
-    @statidmethod
+    @staticmethod
     def from_json(self, json):
         return Plant(
             genus=json["genus"],
