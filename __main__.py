@@ -11,4 +11,6 @@ while True:
         Commands.__water__()
     elif str(i).strip() == "":
         continue
+    else:
+        Commands.__process__()
 print("GOODBYE")
