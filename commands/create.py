@@ -1,16 +1,15 @@
 import Command
 import json
-
-
-
+from models.plant import Plant
+from util.db_util import read_plants
 class Create(Command):
+
     def __int__(self):
-        print("")
+        super().__init__('create')
 
     @staticmethod
     def process():
-        f = open('data/plants.json')
-        plants = json.load(f)
+        plants = read_plants()
 
         genus = input("Genus? ")
         type = input("Type? ")
@@ -22,6 +21,8 @@ class Create(Command):
         if yes_or_no == "no" or yes_or_no == "n":
             return
         plant = Plant(genus=genus, name=name, type=type, watering=watering)
+        print(plant)
+
         # TODO: Does not support doubles
         plants.append(plant.to_json())
 

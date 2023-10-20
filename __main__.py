@@ -1,16 +1,23 @@
 import sys
-from commands import Commands
+from commands.create import Create
+
+manual_commands = [
+    Create()
+]
+auto_commands = [
+
+]
 i=" "
 while True:
     i = sys.stdin.readline()
-    if str(i).strip() == "quit":
+    key = str(i).strip()
+    if key == "quit":
         break
-    elif str(i).strip() == "create":
-        Commands.__create__()
-    elif str(i).strip() == "water":
-        Commands.__water__()
-    elif str(i).strip() == "":
-        continue
+    elif len(key) > 0:
+        for command in manual_commands:
+            if key == command.key:
+                command.process()
     else:
-        Commands.__process__()
+        for command in auto_commands:
+            command.process()
 print("GOODBYE")
