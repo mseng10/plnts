@@ -1,1 +1,1 @@
-Welcome! This is a dedicate repository to how I'll store and manage any of the many plants I care for on a day to day basis. Please feel free to contribute!
+Welcome! This is a dedicated repository to how I'll manage the many plants I care for on a day to day basis.
