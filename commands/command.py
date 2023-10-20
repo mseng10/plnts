@@ -1,4 +1,4 @@
-
+from abc import abstractmethod
 class Command:
     """ Abstract Command class. """
     def __init__(self, key:str) -> None:
