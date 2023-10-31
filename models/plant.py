@@ -1,7 +1,7 @@
 from models.model import Model
 class Plant(Model):
     """Plant model."""
-    def __init__(self, genus, name, type, watering):
+    def __init__(self, id, genus, name, type, watering):
         super().__init__()
         self.genus: str = genus
         self.type: str = type

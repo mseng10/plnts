@@ -11,7 +11,9 @@ class Create(Command):
         plants = DBUtil.read_plants()
 
         print("Current Geni (lol):")
-        for p in plants: print(f"\t{p.genus}")
+        filter_plants = []
+        for p in plants:
+            print(f"\t{p.genus}")
         genus: str = input("Genus? ")
 
         print("Current Types in Geni (lol):")
@@ -19,13 +21,21 @@ class Create(Command):
             if genus == p.genus:
                 print(f"\t{p.type}")
         type = input("Type? ")
-        
+
         for p in plants: print(f"\t{p.name}")
         name = input("Name? ")
 
-        watering = input("Water how often (e.g. 1)? ")
+        watering = int(input("Water how often (days)? "))
+        cost = int(input("Cost?"))
 
-        plant = Plant(genus=genus, name=name, type=type, watering=watering)
+        last_water = input("Last Water (MM-DD-YYYY)? ")
+
+        plant = Plant(genus=genus,
+                      name=name,
+                      type=type,
+                      watering=watering,
+                      cost=cost,
+                      last_water=last_water)
         print(plant)
         if not Util.confirm("Create?"):
             return
