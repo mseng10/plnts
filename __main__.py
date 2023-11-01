@@ -1,7 +1,8 @@
 import sys
 from commands.create import Create
+from commands.stats import Stats
 
-manual_commands = [Create("create")]
+manual_commands = [Create("create"), Stats("stats")]
 auto_commands = []
 i = " "
 while True:
