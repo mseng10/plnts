@@ -1,8 +1,12 @@
 from abc import abstractmethod
+
+
 class Command:
-    """ Abstract Command class. """
-    def __init__(self, key:str) -> None:
+    """Abstract Command class."""
+
+    def __init__(self, key: str) -> None:
         self.key: str = key
+
     @abstractmethod
     def process(self) -> None:
         pass

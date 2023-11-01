@@ -1,13 +1,9 @@
 import sys
 from commands.create import Create
 
-manual_commands = [
-    Create("create")
-]
-auto_commands = [
-
-]
-i=" "
+manual_commands = [Create("create")]
+auto_commands = []
+i = " "
 while True:
     i = sys.stdin.readline()
     key = str(i).strip()
