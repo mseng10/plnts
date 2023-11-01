@@ -1,7 +1,7 @@
 import json
 
-class Model(object):
 
+class Model(object):
     def __init__(self):
         print()
 

@@ -2,10 +2,11 @@ from commands.command import Command
 from models.plant import Plant
 from util.db_util import DBUtil
 from util.util import Util
-class Create(Command):
 
+
+class Create(Command):
     def __int__(self):
-        super().__init__('create')
+        super().__init__("create")
 
     def process(self):
         plants = DBUtil.read_plants()
@@ -22,7 +23,8 @@ class Create(Command):
                 print(f"\t{p.type}")
         type = input("Type? ")
 
-        for p in plants: print(f"\t{p.name}")
+        for p in plants:
+            print(f"\t{p.name}")
         name = input("Name? ")
 
         watering = int(input("Water how often (days)? "))
@@ -30,12 +32,14 @@ class Create(Command):
 
         last_water = input("Last Water (MM-DD-YYYY)? ")
 
-        plant = Plant(genus=genus,
-                      name=name,
-                      type=type,
-                      watering=watering,
-                      cost=cost,
-                      last_water=last_water)
+        plant = Plant(
+            genus=genus,
+            name=name,
+            type=type,
+            watering=watering,
+            cost=cost,
+            last_water=last_water,
+        )
         print(plant)
         if not Util.confirm("Create?"):
             return
