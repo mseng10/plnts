@@ -3,7 +3,7 @@ import json
 
 class Model(object):
     def __init__(self):
-        print()
+        pass
 
     def to_json(self):
         return json.dumps(self.__dict__)

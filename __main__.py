@@ -12,7 +12,6 @@ while True:
         break
     elif len(key) > 0:
         for command in manual_commands:
-            print(key)
             if key == command.key:
                 command.process()
     else:

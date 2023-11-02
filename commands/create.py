@@ -9,6 +9,7 @@ class Create(Command):
         super().__init__("create")
 
     def process(self):
+        super().process()
         plants = DBUtil.read_plants()
 
         print("Current Geni (lol):")
