@@ -6,14 +6,13 @@ from util.util import Util
 
 class Create(Command):
     def __int__(self):
-        super().__init__("create")
+        super().__init__()
 
     def process(self):
         super().process()
         plants = DBUtil.read_plants()
 
         print("Current Geni (lol):")
-        filter_plants = []
         for p in plants:
             print(f"\t{p.genus}")
         genus: str = input("Genus? ")
@@ -22,18 +21,27 @@ class Create(Command):
         for p in plants:
             if genus == p.genus:
                 print(f"\t{p.type}")
-        type = input("Type? ")
+        type: str = input("Type? ")
 
+        print("Current Names in Type:")
         for p in plants:
-            print(f"\t{p.name}")
-        name = input("Name? ")
+            if genus == p.genus and type == p.type:
+                print(f"\t{p.name}")
+        name: str = input("Name? ")
 
-        watering = int(input("Water how often (days)? "))
-        cost = int(input("Cost?"))
+        total: int = 0
+        for p in plants:
+            if genus == p.genus and type == p.type and name == p.name:
+                total += 1
 
-        last_water = input("Last Water (MM-DD-YYYY)? ")
+        watering: int = int(input("Water how often (days)? "))
+        cost: int = int(input("Cost?"))
+        last_water: str = input("Last Water (MM-DD-YYYY)? ")
+        print(len(last_water))
+
 
         plant = Plant(
+            id=total+1,
             genus=genus,
             name=name,
             type=type,
