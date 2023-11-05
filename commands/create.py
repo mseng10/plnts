@@ -39,9 +39,8 @@ class Create(Command):
         last_water: str = input("Last Water (MM-DD-YYYY)? ")
         print(len(last_water))
 
-
         plant = Plant(
-            id=total+1,
+            id=total + 1,
             genus=genus,
             name=name,
             type=type,
