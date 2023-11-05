@@ -1,4 +1,3 @@
-
 class Command:
     """Abstract Command class."""
 
