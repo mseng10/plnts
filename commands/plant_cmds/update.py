@@ -5,10 +5,9 @@ from util.db_util import DBUtil
 
 class Update(Command):
     """Update a plant command."""
+
     def __init__(self) -> None:
-        Command.__init__(
-            self, key="update", description="Update a plant."
-        )
+        Command.__init__(self, key="update", description="Update a plant.")
 
     def process(self) -> None:
         super().process()
@@ -59,7 +58,3 @@ class Update(Command):
             plant.__setattr__(key, value)
 
         print("Successfully updated plant!")
-
-
-
-
