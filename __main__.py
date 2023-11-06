@@ -1,8 +1,8 @@
 import sys
-from commands.create import Create
+from commands.plant_cmds.create import Create
 from commands.stats import Stats
-from commands.water import Water
-from commands.need_water import NeedWaterCommand
+from commands.plant_cmds.water import Water
+from commands.plant_cmds.need_water import NeedWaterCommand
 from datetime import datetime
 
 manual_cmds = [Create(), Stats(), Water()]
