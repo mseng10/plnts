@@ -38,7 +38,7 @@ class Create(Command):
                 total += 1
 
         watering: int = int(input("Water how often (days)? "))
-        cost: int = int(input("Cost?"))
+        cost: int = int(input("Cost($)? "))
         last_water: str = input("Last Water (MM-DD-YYYY)? ")
         print(len(last_water))
 
@@ -52,7 +52,7 @@ class Create(Command):
             last_water=last_water,
         )
         print(plant)
-        if not Util.confirm("Create?"):
+        if not Util.confirm("Create? "):
             # TODO : Edit capability's?
             return
 

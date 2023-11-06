@@ -37,5 +37,5 @@ class Water(Command):
                     p.water()
         elif Util.confirm("One by one?"):
             for p in plants:
-                if p in plants_need_water and Util.confirm(f"{p} water?"):
+                if p in plants_need_water and Util.confirm(f"{p} water? "):
                     p.water()
