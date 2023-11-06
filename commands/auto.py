@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 
 
 class AutoCommand(Command):
+    """Command that allows itself to be runnable. TODO:Maybe split into Runnable class with Plant?"""
+
     def __init__(
         self, key: str, description: str, last_run: str, inc: int
     ) -> None:  # duh
@@ -11,6 +13,7 @@ class AutoCommand(Command):
         Command.__init__(self, key=key, description=description)
 
     def ready(self, curr_time) -> bool:
+        """Is this command ready to process?"""
         return (
             datetime.strptime(self.last_run, "%m-%d-%Y") + timedelta(days=self.inc)
             >= curr_time

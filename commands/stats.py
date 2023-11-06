@@ -3,6 +3,8 @@ from util.db_util import DBUtil
 
 
 class Stats(Command):
+    """Calculate and display plant data set stats command."""
+
     def __init__(self):
         Command.__init__(
             self,
