@@ -5,8 +5,11 @@ from util.util import Util
 
 
 class Create(Command):
-    def __int__(self):
-        super().__init__()
+    def __init__(self) -> None:
+        Command.__init__(self,
+                         key="create",
+                         description="Create a plant and add it to the clan."
+                         )
 
     def process(self):
         super().process()
@@ -50,6 +53,7 @@ class Create(Command):
         )
         print(plant)
         if not Util.confirm("Create?"):
+            # TODO : Edit capability's?
             return
 
         plants.append(plant)

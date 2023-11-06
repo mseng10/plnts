@@ -8,6 +8,7 @@ class NeedWaterCommand(AutoCommand):
         AutoCommand.__init__(
             self,
             key="need_water",
+            description="Checks and displays plants that need water.",
             last_run=datetime.now().strftime("%m-%d-%Y"),
             inc=1,  # every day
         )
