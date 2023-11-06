@@ -1,17 +1,18 @@
 import sys
 from commands.create import Create
 from commands.stats import Stats
+from commands.water import Water
 from commands.need_water import NeedWaterCommand
 from datetime import datetime
 
-manaul_cmds = [Create(), Stats()]
+manual_cmds = [Create(), Stats(), Water()]
 auto_cmds = [NeedWaterCommand()]
 i = " "
 
 
 def print_help():
     print("Manual commands:")
-    for cmd in manaul_cmds:
+    for cmd in manual_cmds:
         print(cmd)
     print("----------------")
     print("Auto commands:")
@@ -27,7 +28,7 @@ while True:
     elif key == "help":
         print_help()
     elif len(key) > 0:
-        for command in manaul_cmds:
+        for command in manual_cmds:
             if key == command.key:
                 command.process()
     else:
