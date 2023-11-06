@@ -3,8 +3,12 @@ from util.db_util import DBUtil
 
 
 class Stats(Command):
-    def __int__(self):
-        super().__init__("stats")
+    def __init__(self):
+        Command.__init__(
+            self,
+            key="stats",
+            description="Calculates and displays statistical analysis of the plants.",
+        )
 
     def process(self):  # TODO unlimited args for param support to query
         super().process()

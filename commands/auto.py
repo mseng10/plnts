@@ -3,10 +3,12 @@ from datetime import datetime, timedelta
 
 
 class AutoCommand(Command):
-    def __init__(self, key: str, last_run: str, inc: int) -> None:  # duh
+    def __init__(
+        self, key: str, description: str, last_run: str, inc: int
+    ) -> None:  # duh
         self.last_run: str = last_run
         self.inc: int = inc
-        Command.__init__(self, key=key)
+        Command.__init__(self, key=key, description=description)
 
     def ready(self, curr_time) -> bool:
         return (
