@@ -6,10 +6,9 @@ from util.util import Util
 
 class Create(Command):
     def __init__(self) -> None:
-        Command.__init__(self,
-                         key="create",
-                         description="Create a plant and add it to the clan."
-                         )
+        Command.__init__(
+            self, key="create", description="Create a plant and add it to the clan."
+        )
 
     def process(self):
         super().process()
