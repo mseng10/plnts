@@ -10,10 +10,11 @@ class Create(Command):
             self, key="create", description="Create a plant and add it to the clan."
         )
 
-    def process(self):
+    def process(self) -> None:
         super().process()
-        plants = DBUtil.read_plants()
+        DBUtil.update_plants(self._process)
 
+    def _process(self, plants: list[Plant]) -> None:
         print("Current Geni (lol):")
         for p in plants:
             print(f"\t{p.genus}")
@@ -56,4 +57,3 @@ class Create(Command):
             return
 
         plants.append(plant)
-        DBUtil.load_plants(plants)

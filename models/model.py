@@ -2,7 +2,9 @@ import json
 
 
 class Model(object):
-    def __init__(self):
+    """Abstract model class (stored in the db)."""
+
+    def __init__(self) -> None:
         pass
 
     def to_json(self):

@@ -28,9 +28,11 @@ class Plant(Model):
         return f"{self.name} ({self.type}/{self.genus})"
 
     def needs_water(self) -> bool:
+        """Does the plant need water?"""
         return datetime.now() > datetime.strptime(
             self.last_water, "%m-%d-%Y"
         ) + timedelta(days=self.watering)
 
     def water(self) -> None:
+        """Water the plant."""
         self.last_water: str = datetime.now().strftime("%m-%d-%Y")

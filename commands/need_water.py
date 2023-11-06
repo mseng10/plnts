@@ -1,5 +1,6 @@
 from datetime import datetime
 from commands.auto import AutoCommand
+from models.plant import Plant
 from util.db_util import DBUtil
 
 
@@ -14,10 +15,10 @@ class NeedWaterCommand(AutoCommand):
         )
 
         def process(self) -> None:
-            super().process()
-            DBUtil.run_on_plants(self._process)
+            AutoCommand.process(self)
+            DBUtil.update_plants(self._process)
 
-        def _process(self, plants):
+        def _process(self, plants: list[Plant]) -> None:
             for plant in plants:
                 if plant.needs_water():
                     print(f"{plant} needs water!")
