@@ -9,4 +9,5 @@ class Command:
         return f"{self.key} - {self.description}"
 
     def process(self) -> None:
+        print("")
         print(f"Running {self.key} command")
