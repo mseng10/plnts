@@ -2,10 +2,11 @@ import sys
 from commands.plant_cmds.create import Create
 from commands.stats import Stats
 from commands.plant_cmds.water import Water
+from commands.plant_cmds.update import Update
 from commands.plant_cmds.need_water import NeedWaterCommand
 from datetime import datetime
 
-manual_cmds = [Create(), Stats(), Water()]
+manual_cmds = [Create(), Stats(), Water(), Update()]
 auto_cmds = [NeedWaterCommand()]
 i = " "
 
