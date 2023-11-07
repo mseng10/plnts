@@ -41,7 +41,7 @@ class DBUtil:
         if isinstance(value_on_model, int):
             model.__setattr__(key, int(value))
         elif isinstance(value_on_model, float):
-            model.__setattr__(key, int(value))
+            model.__setattr__(key, float(value))
         else:
             model.__setattr__(key, value)
         print(f"{model} had {key} updated to {value}!")
