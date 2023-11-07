@@ -1,6 +1,7 @@
 from commands.command import Command
 from models.plant import Plant
 from util.db_util import DBUtil
+from util.util import Util
 
 
 class Update(Command):
@@ -41,20 +42,24 @@ class Update(Command):
         filtered_plants = [p for p in filtered_plants if p.id == id]
 
         plant = filtered_plants[0]
+        print("--------------------")
         print(f"{plant} to update.")
-        kvps = plant.__dict__
-        for key in kvps:
-            print(f"{key} - {kvps[key]}")
+        while Util.confirm("Continue to update field on plant"):
+            self.__run_plant_update(plant)
 
-        key: str = input("Which field? ")
-        if key not in kvps.keys():
+    def __run_plant_update(self, plant: Plant) -> None:
+        print("--------------------")
+        print(f"Current {plant} data:")
+        for key in plant.__dict__:
+            print(f"{key} - {plant.__dict__[key]}")
+
+        key: str = input("Which field to update? ")
+        if key not in plant.__dict__.keys():
             print("Field not in available fields.")
+            print("Exiting..") # TODO: Retry?
             return
         value = input("Value? ")
-        value_on_model = plant.__getattribute__(key)
-        if isinstance(value_on_model, int):
-            plant.__setattr__(key, int(value))
-        else:
-            plant.__setattr__(key, value)
-
+        DBUtil.update_model(plant, key, value)
         print("Successfully updated plant!")
+        print("--------------------")
+

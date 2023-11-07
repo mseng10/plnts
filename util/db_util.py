@@ -1,4 +1,5 @@
 from models.plant import Plant
+from models.model import Model
 import json
 
 PLANT_DB = "data/plants.json"
@@ -32,3 +33,14 @@ class DBUtil:
         """Gets and performs the method on them. Maybe a little overkill to have this method."""
         plants: list[Plant] = DBUtil.read_plants()
         runnable(plants)
+
+    @staticmethod
+    def update_model(model: Model, key: str, value: any) -> None:
+        """Update a field on a model."""
+        value_on_model = model.__getattribute__(key)
+        if isinstance(value_on_model, int):
+            model.__setattr__(key, int(value))
+        elif isinstance(value_on_model, float):
+            model.__setattr__(key, int(value))
+        else:
+            model.__setattr__(key, value)
