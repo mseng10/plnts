@@ -15,6 +15,7 @@ class Update(Command):
         DBUtil.update_plants(self._process)
 
     def _process(self, plants: list[Plant]) -> None:
+        """ Prompts the user to update the plants. """
         # TODO: CLEAN UP
         filtered_plants: list[Plant] = plants
         print("Current Geni (lol):")
@@ -47,7 +48,11 @@ class Update(Command):
         while Util.confirm("Continue to update field on plant"):
             self.__run_plant_update(plant)
 
+        print("Updating is over..")
+        print()
+
     def __run_plant_update(self, plant: Plant) -> None:
+        """Prompt the user for a field and value to update on the provided plant."""
         print("--------------------")
         print(f"Current {plant} data:")
         for key in plant.__dict__:

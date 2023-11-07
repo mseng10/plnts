@@ -44,3 +44,4 @@ class DBUtil:
             model.__setattr__(key, int(value))
         else:
             model.__setattr__(key, value)
+        print(f"{model} had {key} updated to {value}!")
