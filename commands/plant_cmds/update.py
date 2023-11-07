@@ -15,7 +15,7 @@ class Update(Command):
         DBUtil.update_plants(self._process)
 
     def _process(self, plants: list[Plant]) -> None:
-        """ Prompts the user to update the plants. """
+        """Prompts the user to update the plants."""
         # TODO: CLEAN UP
         filtered_plants: list[Plant] = plants
         print("Current Geni (lol):")
@@ -61,10 +61,9 @@ class Update(Command):
         key: str = input("Which field to update? ")
         if key not in plant.__dict__.keys():
             print("Field not in available fields.")
-            print("Exiting..") # TODO: Retry?
+            print("Exiting..")  # TODO: Retry?
             return
         value = input("Value? ")
         DBUtil.update_model(plant, key, value)
         print("Successfully updated plant!")
         print("--------------------")
-
