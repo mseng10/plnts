@@ -3,7 +3,7 @@ class Command:
 
     def __init__(self, key: str, description: str = "No description provided.") -> None:
         self.key: str = key
-        self.description = description
+        self.description: str = description
 
     def __repr__(self):
         return f"{self.key} - {self.description}"

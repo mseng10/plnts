@@ -1,24 +1,31 @@
 from models.plant import Plant
 from models.model import Model
 import json
+import __main__ as config
 
-PLANT_DB = "data/plants.json"
+PLANT_DB = "data/prod/plants.json"
+PLANT_DB_TEST = "data/test/plants.json"
 
 
 class DBUtil:
     """Various DB helper methods."""
 
     @staticmethod
+    def get_plant_db_path() -> str:
+        """Get the plant db path for this configured instance of PMS."""
+        return PLANT_DB_TEST if config.TEST_MODE else PLANT_DB
+
+    @staticmethod
     def read_plants() -> list[Plant]:
         """Read plants from the db."""
-        f = open(PLANT_DB)
+        f = open(DBUtil.get_plant_db_path())
         plants = json.load(f)
         return [Plant.from_json(Plant, plant) for plant in plants]
 
     @staticmethod
     def load_plants(plants: list[Plant]):
         """Replace all plants in the db."""
-        with open(PLANT_DB, "w") as outfile:
+        with open(DBUtil.get_plant_db_path(), "w") as outfile:
             json.dump([plant.to_json() for plant in plants], outfile)
 
     @staticmethod
