@@ -45,4 +45,4 @@ if __name__ == "__main__":
     test_mode = True if len(sys.argv) == 2 and sys.argv[1] == "--test" else False
     config = Config(test_mode=test_mode)
     print(f"\n{config}\n")
-    run(test_mode)
+    run()
