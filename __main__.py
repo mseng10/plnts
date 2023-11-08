@@ -10,7 +10,7 @@ from datetime import datetime
 config: Config = None
 
 
-def run(test_mode: bool = False) -> None:
+def run() -> None:
     manual_cmds = [Create(), Stats(), Water(), Update()]
     auto_cmds = [NeedWaterCommand()]
 
