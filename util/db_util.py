@@ -1,7 +1,7 @@
 from models.plant import Plant
 from models.model import Model
 import json
-import __main__ as config
+import __main__ as system
 
 PLANT_DB = "data/prod/plants.json"
 PLANT_DB_TEST = "data/test/plants.json"
@@ -13,7 +13,7 @@ class DBUtil:
     @staticmethod
     def get_plant_db_path() -> str:
         """Get the plant db path for this configured instance of PMS."""
-        return PLANT_DB_TEST if config.TEST_MODE else PLANT_DB
+        return PLANT_DB_TEST if system.config.test_mode else PLANT_DB
 
     @staticmethod
     def read_plants() -> list[Plant]:

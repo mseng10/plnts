@@ -4,18 +4,13 @@ from commands.stats import Stats
 from commands.plant_cmds.water import Water
 from commands.plant_cmds.update import Update
 from commands.plant_cmds.need_water import NeedWaterCommand
+from models.config import Config
 from datetime import datetime
 
-TEST_MODE: bool = False
+config: Config = None
 
 
 def run(test_mode: bool = False) -> None:
-    # TODO: Potentially put into config object?
-    global TEST_MODE
-    TEST_MODE = test_mode
-    if TEST_MODE:
-        print("\nTest mode is enabled for this process!\n")
-
     manual_cmds = [Create(), Stats(), Water(), Update()]
     auto_cmds = [NeedWaterCommand()]
 
@@ -48,4 +43,6 @@ def run(test_mode: bool = False) -> None:
 
 if __name__ == "__main__":
     test_mode = True if len(sys.argv) == 2 and sys.argv[1] == "--test" else False
+    config = Config(test_mode=test_mode)
+    print(f"\n{config}\n")
     run(test_mode)
