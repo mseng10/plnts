@@ -13,11 +13,11 @@ def run() -> None:
     auto_cmds = [NeedWaterCommand()]
 
     def print_help():
-        print("Manual commands:")
+        print(Fore.LIGHTBLUE_EX + "Manual commands:")
         for cmd in manual_cmds:
             print(cmd)
         print("----------------")
-        print("Auto commands:")
+        print(Fore.LIGHTBLUE_EX + "Auto commands:")
         for cmd in auto_cmds:
             print(cmd)
 
