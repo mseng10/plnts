@@ -6,9 +6,7 @@ from commands.plant_cmds.update import Update
 from commands.plant_cmds.need_water import NeedWaterCommand
 from models.config import Config
 from datetime import datetime
-
-config: Config = None
-
+from colorama import init, Fore
 
 def run() -> None:
     manual_cmds = [Create(), Stats(), Water(), Update()]
@@ -38,11 +36,13 @@ def run() -> None:
             for command in auto_cmds:
                 if command.ready(datetime.now()):
                     command.process()
-    print("GOODBYE")
+    print(Fore.GREEN + "GOODBYE:)")
 
 
 if __name__ == "__main__":
+    init(autoreset=True)
     test_mode = True if len(sys.argv) == 2 and sys.argv[1] == "--test" else False
     config = Config(test_mode=test_mode)
-    print(f"\n{config}\n")
+    print(Fore.LIGHTBLUE_EX + f'{config}')
+    print()
     run()
