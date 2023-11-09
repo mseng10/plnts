@@ -8,6 +8,7 @@ from models.config import Config
 from datetime import datetime
 from colorama import init, Fore
 
+
 def run() -> None:
     manual_cmds = [Create(), Stats(), Water(), Update()]
     auto_cmds = [NeedWaterCommand()]
@@ -43,6 +44,6 @@ if __name__ == "__main__":
     init(autoreset=True)
     test_mode = True if len(sys.argv) == 2 and sys.argv[1] == "--test" else False
     config = Config(test_mode=test_mode)
-    print(Fore.LIGHTBLUE_EX + f'{config}')
+    print(Fore.LIGHTBLUE_EX + f"{config}")
     print()
     run()
