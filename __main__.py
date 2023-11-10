@@ -1,9 +1,9 @@
 import sys
-from commands.plant_cmds.create import Create
-from commands.stats import Stats
-from commands.plant_cmds.water import Water
-from commands.plant_cmds.update import Update
-from commands.plant_cmds.need_water import NeedWaterCommand
+from commands.manual.create import Create
+from commands.manual.stats import Stats
+from commands.manual.water import Water
+from commands.manual.update import Update
+from commands.auto.need_water import NeedWaterCommand
 from models.config import Config
 from datetime import datetime
 from colorama import init, Fore
