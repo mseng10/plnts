@@ -21,25 +21,25 @@ class Update(Command):
         print("Current Geni (lol):")
         for p in filtered_plants:
             print(f"\t{p.genus}")
-        genus: str = input("Genus? ")
+        genus: str = self.input("Genus? ")
         filtered_plants = [p for p in filtered_plants if p.genus == genus]
 
         print("Current Types in Geni (lol):")
         for p in filtered_plants:
             print(f"\t{p.type}")
-        type: str = input("Type? ")
+        type: str = self.input("Type? ")
         filtered_plants = [p for p in filtered_plants if p.type == type]
 
         print("Current Names in Type:")
         for p in filtered_plants:
             print(f"\t{p.name}")
-        name: str = input("Name? ")
+        name: str = self.input("Name? ")
         filtered_plants = [p for p in filtered_plants if p.name == name]
 
         print("Which one?")
         for p in filtered_plants:
             print(f"\t{p.id}")
-        id: int = int(input("ID? "))
+        id: int = int(self.input("ID? "))
         filtered_plants = [p for p in filtered_plants if p.id == id]
 
         plant = filtered_plants[0]
@@ -58,12 +58,12 @@ class Update(Command):
         for key in plant.__dict__:
             print(f"{key} - {plant.__dict__[key]}")
 
-        key: str = input("Which field to update? ")
+        key: str = self.input("Which field to update? ")
         if key not in plant.__dict__.keys():
             print("Field not in available fields.")
             print("Exiting..")  # TODO: Retry?
             return
-        value = input("Value? ")
+        value = self.input("Value? ")
         DBUtil.update_model(plant, key, value)
         print("Successfully updated plant!")
         print("--------------------")

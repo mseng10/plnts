@@ -18,28 +18,28 @@ class Create(Command):
         print("Current Geni (lol):")
         for p in plants:
             print(f"\t{p.genus}")
-        genus: str = input("Genus? ")
+        genus: str = self.input("Genus? ")
 
         print("Current Types in Geni (lol):")
         for p in plants:
             if genus == p.genus:
                 print(f"\t{p.type}")
-        type: str = input("Type? ")
+        type: str = self.input("Type? ")
 
         print("Current Names in Type:")
         for p in plants:
             if genus == p.genus and type == p.type:
                 print(f"\t{p.name}")
-        name: str = input("Name? ")
+        name: str = self.input("Name? ")
 
         total: int = 0
         for p in plants:
             if genus == p.genus and type == p.type and name == p.name:
                 total += 1
 
-        watering: int = int(input("Water how often (days)? "))
-        cost: int = int(input("Cost($)? "))
-        last_water: str = input("Last Water (MM-DD-YYYY)? ")
+        watering: int = int(self.input("Water how often (days)? "))
+        cost: int = int(self.input("Cost($)? "))
+        last_water: str = self.input("Last Water (MM-DD-YYYY)? ")
         print(len(last_water))
 
         plant = Plant(

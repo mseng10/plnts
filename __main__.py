@@ -32,7 +32,10 @@ def run() -> None:
         elif len(key) > 0:
             for command in manual_cmds:
                 if key == command.key:
-                    command.process()
+                    try:
+                        command.process()
+                    except Exception as e:
+                        print(f"{e}\n")
         else:
             for command in auto_cmds:
                 if command.ready(datetime.now()):
