@@ -12,8 +12,7 @@ class Command:
         return f"{self.key} - {self.description}"
 
     def process(self) -> None:
-        print("")
-        print(f"Running {self.key} command")
+        print(f"\nRunning {self.key} command")
 
     def input(self, question: str) -> any:
         while True:
@@ -23,6 +22,7 @@ class Command:
                 print(Fore.RED + f"Attempting to exit {self.key} command.")
                 if Util.confirm("Are you sure"):
                     raise Exception(f"Exiting {self.key} command.")
+            # TODO: Implement off command?
             # elif value == "OFF":
             #     print(Fore.RED + "Attempting to turn off the system.")
             #     if Util.confirm("Are you sure"):
