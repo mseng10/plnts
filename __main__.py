@@ -1,9 +1,9 @@
 import sys
-from commands.plant_cmds.create import Create
-from commands.stats import Stats
-from commands.plant_cmds.water import Water
-from commands.plant_cmds.update import Update
-from commands.plant_cmds.need_water import NeedWaterCommand
+from commands.manual.create import Create
+from commands.manual.stats import Stats
+from commands.manual.water import Water
+from commands.manual.update import Update
+from commands.auto.need_water import NeedWaterCommand
 from models.config import Config
 from datetime import datetime
 from colorama import init, Fore
@@ -32,7 +32,10 @@ def run() -> None:
         elif len(key) > 0:
             for command in manual_cmds:
                 if key == command.key:
-                    command.process()
+                    try:
+                        command.process()
+                    except Exception as e:
+                        print(f"{e}\n")
         else:
             for command in auto_cmds:
                 if command.ready(datetime.now()):
