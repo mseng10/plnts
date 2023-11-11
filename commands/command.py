@@ -22,6 +22,8 @@ class Command:
                 print(Fore.RED + f"Attempting to exit {self.key} command.")
                 if Util.confirm("Are you sure"):
                     raise Exception(f"Exiting {self.key} command.")
+            else:
+                return value
             # TODO: Implement off command?
             # elif value == "OFF":
             #     print(Fore.RED + "Attempting to turn off the system.")

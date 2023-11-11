@@ -1,5 +1,5 @@
 from datetime import datetime
-from commands.auto import AutoCommand
+from commands.auto.auto import AutoCommand
 from models.plant import Plant
 from util.db_util import DBUtil
 
