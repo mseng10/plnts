@@ -1,8 +1,9 @@
 import sys
 from commands.manual.create import Create
 from commands.manual.stats import Stats
-from commands.manual.water import Water
-from commands.manual.update import Update
+
+# from commands.manual.water import Water
+# from commands.manual.update import Update
 from commands.auto.need_water import NeedWaterCommand
 from models.config import Config
 from datetime import datetime
@@ -10,7 +11,8 @@ from colorama import init, Fore
 
 
 def run() -> None:
-    manual_cmds = [Create(), Stats(), Water(), Update()]
+    # manual_cmds = [Create(), Stats(), Water(), Update()]
+    manual_cmds = [Create(), Stats()]
     auto_cmds = [NeedWaterCommand()]
 
     def print_help():

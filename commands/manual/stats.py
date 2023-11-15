@@ -1,5 +1,7 @@
 from commands.command import Command
-from util.db_util import DBUtil
+
+from db import Session
+from models.plant import Plant
 
 
 class Stats(Command):
@@ -14,7 +16,8 @@ class Stats(Command):
 
     def process(self):  # TODO unlimited args for param support to query
         super().process()
-        plants = DBUtil.read_plants()
+        db = Session()
+        plants: list[Plant] = db.query(Plant).all()
 
         print(f"Totals: {len(plants)}")
         print(f"Geni: {len(set([p.genus for p in plants]))}")

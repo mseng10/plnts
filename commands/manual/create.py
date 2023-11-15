@@ -1,7 +1,9 @@
 from commands.command import Command
 from models.plant import Plant
-from util.db_util import DBUtil
 from util.util import Util
+import datetime
+
+from db import Session
 
 
 class Create(Command):
@@ -12,9 +14,9 @@ class Create(Command):
 
     def process(self) -> None:
         super().process()
-        DBUtil.update_plants(self._process)
+        db = Session()
 
-    def _process(self, plants: list[Plant]) -> None:
+        plants: list[Plant] = db.query(Plant).all()
         print("Current Geni (lol):")
         for p in plants:
             print(f"\t{p.genus}")
@@ -32,18 +34,14 @@ class Create(Command):
                 print(f"\t{p.name}")
         name: str = self.input("Name? ")
 
-        total: int = 0
-        for p in plants:
-            if genus == p.genus and type == p.type and name == p.name:
-                total += 1
-
         watering: int = int(self.input("Water how often (days)? "))
         cost: int = int(self.input("Cost($)? "))
-        last_water: str = self.input("Last Water (MM-DD-YYYY)? ")
-        print(len(last_water))
+
+        last_water_str: str = input("Last Water (MM-DD-YYYY)? ")
+        month, day, year = map(int, last_water_str.split("-"))
+        last_water = datetime.date(year, month, day)
 
         plant = Plant(
-            id=total + 1,
             genus=genus,
             name=name,
             type=type,
@@ -56,4 +54,5 @@ class Create(Command):
             # TODO : Edit capability's?
             return
 
-        plants.append(plant)
+        db.add(plant)
+        db.commit()
