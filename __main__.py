@@ -1,17 +1,18 @@
 import sys
 from commands.manual.create import Create
 from commands.manual.stats import Stats
-from commands.manual.water import Water
-from commands.manual.update import Update
-from commands.auto.need_water import NeedWaterCommand
+# from commands.manual.water import Water
+# from commands.manual.update import Update
+# from commands.auto.need_water import NeedWaterCommand
 from models.config import Config
 from datetime import datetime
 from colorama import init, Fore
 
-
 def run() -> None:
-    manual_cmds = [Create(), Stats(), Water(), Update()]
-    auto_cmds = [NeedWaterCommand()]
+    # manual_cmds = [Create(), Stats(), Water(), Update()]
+    manual_cmds = [Create(), Stats()]
+    # auto_cmds = [NeedWaterCommand()]
+    auto_cmds = []
 
     def print_help():
         print(Fore.LIGHTBLUE_EX + "Manual commands:")
@@ -41,7 +42,6 @@ def run() -> None:
                 if command.ready(datetime.now()):
                     command.process()
     print(Fore.GREEN + "GOODBYE:)")
-
 
 if __name__ == "__main__":
     init(autoreset=True)
