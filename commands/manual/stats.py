@@ -1,7 +1,7 @@
 from commands.command import Command
+
 # from __main__ import Session as db
 from models.plant import Plant
-
 
 
 class Stats(Command):

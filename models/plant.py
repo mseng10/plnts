@@ -2,13 +2,15 @@ from sqlalchemy import Column, Integer, String, DateTime
 from datetime import datetime
 from models import Base
 
+
 class Plant(Base):
     """Plant model."""
-    __tablename__ = 'plants'
+
+    __tablename__ = "plants"
 
     id = Column(Integer(), primary_key=True)
-    genus = Column(String(100), nullable=False) # should be shared
-    type = Column(String(100), nullable=False) # should be shared
+    genus = Column(String(100), nullable=False)  # should be shared
+    type = Column(String(100), nullable=False)  # should be shared
     name = Column(String(100), nullable=False)
     watering = Column(Integer())
     cost = Column(Integer())

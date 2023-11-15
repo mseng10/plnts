@@ -1,6 +1,7 @@
 from util.util import Util
 from colorama import Fore
 
+
 class Command:
     """Abstract Command class."""
 
@@ -29,4 +30,3 @@ class Command:
             #     print(Fore.RED + "Attempting to turn off the system.")
             #     if Util.confirm("Are you sure"):
             #         raise Exception("Exiting current command.")
-

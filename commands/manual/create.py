@@ -5,6 +5,7 @@ import datetime
 
 from db import Session
 
+
 class Create(Command):
     def __init__(self) -> None:
         Command.__init__(
@@ -37,7 +38,7 @@ class Create(Command):
         cost: int = int(self.input("Cost($)? "))
 
         last_water_str: str = input("Last Water (MM-DD-YYYY)? ")
-        month, day, year = map(int, last_water_str.split('-'))
+        month, day, year = map(int, last_water_str.split("-"))
         last_water = datetime.date(year, month, day)
 
         plant = Plant(
