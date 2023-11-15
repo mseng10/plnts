@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime
-from datetime import datetime
+from datetime import datetime, timedelta
 from models import Base
 
 
@@ -22,12 +22,10 @@ class Plant(Base):
     def __repr__(self) -> str:
         return f"{self.name} ({self.type}/{self.genus})"
 
-    # def needs_water(self) -> bool:
-    #     """Does the plant need water?"""
-    #     return datetime.now() > datetime.strptime(
-    #         self.last_water, "%m-%d-%Y"
-    #     ) + timedelta(days=self.watering)
-    #
-    # def water(self) -> None:
-    #     """Water the plant."""
-    #     self.last_water: str = datetime.now().strftime("%m-%d-%Y")
+    def needs_water(self) -> bool:
+        """Does the plant need water?"""
+        return datetime.now() > self.watered_on + timedelta(days=self.watering)
+
+    def water(self) -> None:
+        """Water the plant."""
+        self.last_water = datetime.now()
