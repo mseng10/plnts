@@ -49,6 +49,5 @@ if __name__ == "__main__":
     init(autoreset=True)
     test_mode = True if len(sys.argv) == 2 and sys.argv[1] == "--test" else False
     config = Config(test_mode=test_mode)
-    print(Fore.LIGHTBLUE_EX + f"{config}")
-    print()
+    print(Fore.LIGHTBLUE_EX + f"{config}\n")
     run()

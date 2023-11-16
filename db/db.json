@@ -1,0 +1,8 @@
+{
+  "drivername": "postgresql",
+  "username": "",
+  "password": "",
+  "host": "localhost",
+  "database": "plnts",
+  "port": 5432
+}
