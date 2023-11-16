@@ -2,7 +2,7 @@ from commands.command import Command
 from datetime import datetime, timedelta
 
 
-class AutoCommand(Command):
+class Recurrent(Command):
     """Command that allows itself to be runnable. TODO:Maybe split into Runnable class with Plant?"""
 
     def __init__(

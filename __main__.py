@@ -4,7 +4,7 @@ from commands.manual.stats import Stats
 
 # from commands.manual.water import Water
 # from commands.manual.update import Update
-from commands.auto.check_water import CheckWater
+from commands.recurrent.check_water import CheckWater
 from models.config import Config
 from datetime import datetime
 from colorama import init, Fore

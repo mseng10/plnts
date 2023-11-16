@@ -1,11 +1,11 @@
 from datetime import datetime
-from commands.auto.auto import AutoCommand
+from commands.recurrent.recurrent import Recurrent
 from models.plant import Plant
 from db import Session
 
-class CheckWater(AutoCommand):
+class CheckWater(Recurrent):
     def __init__(self) -> None:
-        AutoCommand.__init__(
+        Recurrent.__init__(
             self,
             key="need_water",
             description="Checks and displays plants that need water.",
@@ -14,7 +14,7 @@ class CheckWater(AutoCommand):
         )
 
     def process(self) -> None:
-        AutoCommand.process(self)
+        Recurrent.process(self)
         db = Session()
         plants: list[Plant] = db.query(Plant).all()
         for plant in plants:
