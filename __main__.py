@@ -16,6 +16,7 @@ def run() -> None:
     auto_processes = [CheckWater()]
 
     def print_help():
+        print("----------------")
         print(Fore.LIGHTBLUE_EX + "Manual processes:")
         for cmd in manual_processes:
             print(cmd)
@@ -23,6 +24,7 @@ def run() -> None:
         print(Fore.LIGHTBLUE_EX + "Auto processes:")
         for cmd in auto_processes:
             print(cmd)
+        print("----------------")
 
     while True:
         i = sys.stdin.readline()
