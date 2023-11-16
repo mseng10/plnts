@@ -2,7 +2,7 @@ import sys
 from processes.manual.create import Create
 from processes.manual.stats import Stats
 
-# from processes.manual.water import Water
+from processes.manual.water import Water
 # from processes.manual.update import Update
 from processes.recurrent.check_water import CheckWater
 from models.config import Config
@@ -12,7 +12,7 @@ from colorama import init, Fore
 
 def run() -> None:
     # manual_processes = [Create(), Stats(), Water(), Update()]
-    manual_processes = [Create(), Stats()]
+    manual_processes = [Create(), Stats(), Water()]
     auto_processes = [CheckWater()]
 
     def print_help():
@@ -35,6 +35,12 @@ def run() -> None:
             print_help()
         elif len(key) > 0:
             for process in manual_processes:
+                if key == process.key:
+                    try:
+                        process.process()
+                    except Exception as e:
+                        print(f"{e}\n")
+            for process in auto_processes:
                 if key == process.key:
                     try:
                         process.process()
