@@ -1,5 +1,5 @@
 from datetime import datetime
-from commands.recurrent.recurrent import Recurrent
+from processes.recurrent.recurrent import Recurrent
 from models.plant import Plant
 from db import Session
 

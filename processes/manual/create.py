@@ -1,4 +1,4 @@
-from commands.command import Command
+from processes.process import Process
 from models.plant import Plant
 from util.util import Util
 import datetime
@@ -6,9 +6,9 @@ import datetime
 from db import Session
 
 
-class Create(Command):
+class Create(Process):
     def __init__(self) -> None:
-        Command.__init__(
+        Process.__init__(
             self, key="create", description="Create a plant and add it to the clan."
         )
 

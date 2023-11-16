@@ -1,14 +1,14 @@
-from commands.command import Command
+from processes.process import Process
 
 from db import Session
 from models.plant import Plant
 
 
-class Stats(Command):
+class Stats(Process):
     """Calculate and display plant data set stats command."""
 
     def __init__(self):
-        Command.__init__(
+        Process.__init__(
             self,
             key="stats",
             description="Calculates and displays statistical analysis of the plants.",

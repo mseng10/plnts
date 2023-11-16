@@ -2,7 +2,7 @@ from util.util import Util
 from colorama import Fore
 
 
-class Command:
+class Process:
     """Abstract Command class."""
 
     def __init__(self, key: str, description: str = "No description provided.") -> None:
@@ -18,7 +18,7 @@ class Command:
     def input(self, question: str) -> any:
         while True:
             value = input(question)
-            if value == "EXIT":
+            if value == "CANCEL":
                 print()
                 print(Fore.RED + f"Attempting to exit {self.key} command.")
                 if Util.confirm("Are you sure"):

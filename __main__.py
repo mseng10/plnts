@@ -1,27 +1,27 @@
 import sys
-from commands.manual.create import Create
-from commands.manual.stats import Stats
+from processes.manual.create import Create
+from processes.manual.stats import Stats
 
-# from commands.manual.water import Water
-# from commands.manual.update import Update
-from commands.recurrent.check_water import CheckWater
+# from processes.manual.water import Water
+# from processes.manual.update import Update
+from processes.recurrent.check_water import CheckWater
 from models.config import Config
 from datetime import datetime
 from colorama import init, Fore
 
 
 def run() -> None:
-    # manual_cmds = [Create(), Stats(), Water(), Update()]
-    manual_cmds = [Create(), Stats()]
-    auto_cmds = [CheckWater()]
+    # manual_processes = [Create(), Stats(), Water(), Update()]
+    manual_processes = [Create(), Stats()]
+    auto_processes = [CheckWater()]
 
     def print_help():
-        print(Fore.LIGHTBLUE_EX + "Manual commands:")
-        for cmd in manual_cmds:
+        print(Fore.LIGHTBLUE_EX + "Manual processes:")
+        for cmd in manual_processes:
             print(cmd)
         print("----------------")
-        print(Fore.LIGHTBLUE_EX + "Auto commands:")
-        for cmd in auto_cmds:
+        print(Fore.LIGHTBLUE_EX + "Auto processes:")
+        for cmd in auto_processes:
             print(cmd)
 
     while True:
@@ -32,16 +32,16 @@ def run() -> None:
         elif key == "help":
             print_help()
         elif len(key) > 0:
-            for command in manual_cmds:
-                if key == command.key:
+            for process in manual_processes:
+                if key == process.key:
                     try:
-                        command.process()
+                        process.process()
                     except Exception as e:
                         print(f"{e}\n")
         else:
-            for command in auto_cmds:
-                if command.ready(datetime.now()):
-                    command.process()
+            for process in auto_processes:
+                if process.ready(datetime.now()):
+                    process.process()
     print(Fore.GREEN + "GOODBYE:)")
 
 

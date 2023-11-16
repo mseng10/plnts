@@ -1,8 +1,8 @@
-from commands.command import Command
+from processes.process import Process
 from datetime import datetime, timedelta
 
 
-class Recurrent(Command):
+class Recurrent(Process):
     """Command that allows itself to be runnable. TODO:Maybe split into Runnable class with Plant?"""
 
     def __init__(
@@ -10,7 +10,7 @@ class Recurrent(Command):
     ) -> None:  # duh
         self.last_run: str = last_run
         self.inc: int = inc
-        Command.__init__(self, key=key, description=description)
+        Process.__init__(self, key=key, description=description)
 
     def ready(self, curr_time) -> bool:
         """Is this command ready to process?"""
