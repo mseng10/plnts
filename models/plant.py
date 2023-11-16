@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, DateTime
-from datetime import datetime, timedelta
+from sqlalchemy import Column, Integer, String, DateTime, Boolean
+from datetime import datetime
 from models import Base
 
 
@@ -14,6 +14,7 @@ class Plant(Base):
     name = Column(String(100), nullable=False)
     watering = Column(Integer())
     cost = Column(Integer())
+    needs_water = Column(Boolean, default=False, nullable=False)
 
     created_on = Column(DateTime(), default=datetime.now)
     updated_on = Column(DateTime(), default=datetime.now, onupdate=datetime.now)
@@ -21,11 +22,3 @@ class Plant(Base):
 
     def __repr__(self) -> str:
         return f"{self.name} ({self.type}/{self.genus})"
-
-    def needs_water(self) -> bool:
-        """Does the plant need water?"""
-        return datetime.now() > self.watered_on + timedelta(days=self.watering)
-
-    def water(self) -> None:
-        """Water the plant."""
-        self.last_water = datetime.now()

@@ -6,9 +6,9 @@ class Recurrent(Process):
     """Command that allows itself to be runnable. TODO:Maybe split into Runnable class with Plant?"""
 
     def __init__(
-        self, key: str, description: str, last_run: str, inc: int
+        self, key: str, description: str, last_run, inc: int
     ) -> None:  # duh
-        self.last_run: str = last_run
+        self.last_run = last_run
         self.inc: int = inc
         Process.__init__(self, key=key, description=description)
 
