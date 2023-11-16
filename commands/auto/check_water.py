@@ -3,7 +3,7 @@ from commands.auto.auto import AutoCommand
 from models.plant import Plant
 from db import Session
 
-class NeedWaterCommand(AutoCommand):
+class CheckWater(AutoCommand):
     def __init__(self) -> None:
         AutoCommand.__init__(
             self,
@@ -13,10 +13,10 @@ class NeedWaterCommand(AutoCommand):
             inc=1,  # every day
         )
 
-        def process(self) -> None:
-            AutoCommand.process(self)
-            db = Session()
-            plants: list[Plant] = db.query(Plant).all()
-            for plant in plants:
-                if plant.needs_water():
-                    print(f"{plant} needs water!")
+    def process(self) -> None:
+        AutoCommand.process(self)
+        db = Session()
+        plants: list[Plant] = db.query(Plant).all()
+        for plant in plants:
+            if plant.needs_water():
+                print(f"{plant} needs water!")
