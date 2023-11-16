@@ -1,7 +1,7 @@
 from processes.process import Process
 from models.plant import Plant
 from util.util import Util
-import datetime
+from datetime import datetime
 
 from db import Session
 
@@ -37,9 +37,12 @@ class Create(Process):
         watering: int = int(self.input("Water how often (days)? "))
         cost: int = int(self.input("Cost($)? "))
 
-        last_water_str: str = input("Last Water (MM-DD-YYYY)? ")
-        month, day, year = map(int, last_water_str.split("-"))
-        last_water = datetime.date(year, month, day)
+        watered_on_str: str = input("Last Water (MM-DD-YYYY)? ")
+        if len(watered_on_str) == 0:
+            watered_on = datetime.now()
+        else:
+            month, day, year = map(int, watered_on_str.split("-"))
+            watered_on = datetime.date(year, month, day)
 
         plant = Plant(
             genus=genus,
@@ -47,7 +50,7 @@ class Create(Process):
             type=type,
             watering=watering,
             cost=cost,
-            last_water=last_water,
+            watered_on=watered_on,
         )
         print(plant)
         if not Util.confirm("Create? "):
