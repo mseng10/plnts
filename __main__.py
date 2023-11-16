@@ -4,7 +4,7 @@ from commands.manual.stats import Stats
 
 # from commands.manual.water import Water
 # from commands.manual.update import Update
-from commands.auto.need_water import NeedWaterCommand
+from commands.auto.check_water import CheckWater
 from models.config import Config
 from datetime import datetime
 from colorama import init, Fore
@@ -13,7 +13,7 @@ from colorama import init, Fore
 def run() -> None:
     # manual_cmds = [Create(), Stats(), Water(), Update()]
     manual_cmds = [Create(), Stats()]
-    auto_cmds = [NeedWaterCommand()]
+    auto_cmds = [CheckWater()]
 
     def print_help():
         print(Fore.LIGHTBLUE_EX + "Manual commands:")
@@ -49,6 +49,5 @@ if __name__ == "__main__":
     init(autoreset=True)
     test_mode = True if len(sys.argv) == 2 and sys.argv[1] == "--test" else False
     config = Config(test_mode=test_mode)
-    print(Fore.LIGHTBLUE_EX + f"{config}")
-    print()
+    print(Fore.LIGHTBLUE_EX + f"{config}\n")
     run()
