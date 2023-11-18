@@ -1,10 +1,10 @@
-# from processes.command import Command
+# from processes.process import Process
 # from models.plant import Plant
 # from __main__ import Session as db
 # from util.util import Util
 #
 #
-# class Update(Command):
+# class Update(Process):
 #     """Update a plant command."""
 #
 #     def __init__(self) -> None:
