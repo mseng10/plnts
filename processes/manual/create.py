@@ -18,9 +18,10 @@ class Create(Process):
         super().process()
         db = Session()
 
-        plants: list[Plant] = db.query(Plant).all()
+        query = db.query(Plant)
+        plants: list[Plant] = query.all()
         print("Current Geni (lol):")
-        for p in plants:
+        for p in query.all():
             print(f"\t{p.genus}")
         genus: str = self.input("Genus? ")
 
