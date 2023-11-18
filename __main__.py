@@ -8,6 +8,7 @@ from processes.recurrent.check_water import CheckWater
 from models.config import Config
 from datetime import datetime
 from colorama import init, Fore
+from util.util import Util
 
 
 def run() -> None:
@@ -29,8 +30,8 @@ def run() -> None:
     while True:
         i = sys.stdin.readline()
         key = str(i).strip()
-        if key == "quit" or key == "exit":
-            break
+        if key == "quit":
+            Util.system_exit()
         elif key == "help":
             print_help()
         elif len(key) > 0:
@@ -50,7 +51,6 @@ def run() -> None:
             for process in auto_processes:
                 if process.ready(datetime.now()):
                     process.process()
-    print(Fore.GREEN + "GOODBYE:)")
 
 
 if __name__ == "__main__":

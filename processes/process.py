@@ -23,10 +23,9 @@ class Process:
                 print(Fore.RED + f"Attempting to exit {self.key} command.")
                 if Util.confirm("Are you sure"):
                     raise Exception(f"Exiting {self.key} command.")
+            elif value == "EXIT":
+                print(Fore.RED + f"Attempting to exit program {self.key}.")
+                if Util.confirm("Are you sure"):
+                    Util.system_exit()
             else:
                 return value
-            # TODO: Implement off command?
-            # elif value == "OFF":
-            #     print(Fore.RED + "Attempting to turn off the system.")
-            #     if Util.confirm("Are you sure"):
-            #         raise Exception("Exiting current command.")
