@@ -9,9 +9,7 @@ from db import Session
 class Create(Process):
     def __init__(self) -> None:
         Process.__init__(
-            self,
-            key="create",
-            description="Create a plant and add it to the clan."
+            self, key="create", description="Create a plant and add it to the clan."
         )
 
     def process(self) -> None:
