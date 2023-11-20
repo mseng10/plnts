@@ -3,6 +3,7 @@ from processes.recurrent.recurrent import Recurrent
 from models.plant import Plant
 from db import Session
 
+
 class CheckWater(Recurrent):
     def __init__(self) -> None:
         Recurrent.__init__(
@@ -16,8 +17,7 @@ class CheckWater(Recurrent):
     def process(self) -> None:
         Recurrent.process(self)
         db = Session()
-        db.query(Plant) \
-            .filter(Plant.needs_water == False) \
-            .filter(Plant.watered_on + timedelta(days=Plant.watering) < datetime.now()) \
-            .update({Plant.needs_water: True})
+        db.query(Plant).filter(Plant.needs_water == False).filter(
+            Plant.watered_on + timedelta(days=Plant.watering) < datetime.now()
+        ).update({Plant.needs_water: True})
         db.commit()

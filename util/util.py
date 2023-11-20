@@ -1,5 +1,7 @@
 import sys
 from colorama import init, Fore
+
+
 class Util:
     @staticmethod
     def confirm(message: str) -> bool:
@@ -12,4 +14,3 @@ class Util:
         print("")
         print(Fore.GREEN + "GOODBYE:)")
         sys.exit()
-

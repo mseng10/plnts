@@ -3,6 +3,7 @@ from processes.manual.create import Create
 from processes.manual.stats import Stats
 
 from processes.manual.water import Water
+
 # from processes.manual.update import Update
 from processes.recurrent.check_water import CheckWater
 from models.config import Config
