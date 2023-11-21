@@ -1,6 +1,7 @@
 import sys
 from processes.manual.create import Create
 from processes.manual.stats import Stats
+from processes.manual.archive import Archive
 
 from processes.manual.water import Water
 
@@ -14,7 +15,7 @@ from util.util import Util
 
 def run() -> None:
     # manual_processes = [Create(), Stats(), Water(), Update()]
-    manual_processes = [Create(), Stats(), Water()]
+    manual_processes = [Create(), Stats(), Water(), Archive()]
     auto_processes = [CheckWater()]
 
     def print_help():

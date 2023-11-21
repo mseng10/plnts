@@ -20,5 +20,9 @@ class Plant(Base):
     updated_on = Column(DateTime(), default=datetime.now, onupdate=datetime.now)
     watered_on = Column(DateTime(), default=datetime.now)
 
+    dead_on = Column(DateTime(), default=None, nullable=True)
+    cause = Column(String(100), nullable=False)
+    alive = Column(Boolean, default=True, nullable=False)
+
     def __repr__(self) -> str:
         return f"{self.name} ({self.type}/{self.genus})"
