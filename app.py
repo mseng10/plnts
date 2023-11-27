@@ -1,11 +1,11 @@
+from colorama import init, Fore
+from flask import Flask, request, abort
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine import URL
 import json
 
-# TODO: May want to move db.json to __main__ as provided path
-# This get's the job done for now and for awhile
-with open("db/db.json") as json_data_file:
+with open("db.json") as json_data_file:
     db_config = json.load(json_data_file)
 
 url = URL.create(
@@ -20,3 +20,18 @@ url = URL.create(
 engine = create_engine(url)
 connection = engine.connect()
 Session = sessionmaker(bind=engine)
+
+init(autoreset=True)
+app = Flask(__name__)
+
+
+# def print_help():
+#     print("----------------")
+#     print(Fore.LIGHTBLUE_EX + "Manual cli:")
+#     for cmd in manual_processes:
+#         print(cmd)
+#     print("----------------")
+#     print(Fore.LIGHTBLUE_EX + "Auto cli:")
+#     for cmd in auto_processes:
+#         print(cmd)
+#     print("----------------")
