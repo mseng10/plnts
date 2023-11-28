@@ -10,6 +10,12 @@ class Util:
         return val == "y" or val == "yes"
 
     @staticmethod
+    def input(message: str) -> str:
+        result: str = input(message)
+        if result == "QUIT":
+            Util.system_exit()
+        return result
+    @staticmethod
     def system_exit():
         print("")
         print(Fore.GREEN + "GOODBYE:)")

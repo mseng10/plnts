@@ -24,14 +24,4 @@ Session = sessionmaker(bind=engine)
 init(autoreset=True)
 app = Flask(__name__)
 
-
-# def print_help():
-#     print("----------------")
-#     print(Fore.LIGHTBLUE_EX + "Manual cli:")
-#     for cmd in manual_processes:
-#         print(cmd)
-#     print("----------------")
-#     print(Fore.LIGHTBLUE_EX + "Auto cli:")
-#     for cmd in auto_processes:
-#         print(cmd)
-#     print("----------------")
+from cli import create, stats, update, water
