@@ -15,6 +15,7 @@ class Util:
         if result == "QUIT":
             Util.system_exit()
         return result
+
     @staticmethod
     def system_exit():
         print("")

@@ -2,6 +2,8 @@ from models.plant import Plant
 from util.util import Util
 from datetime import datetime
 from app import app, Session
+
+
 @app.cli.command("archive")
 def archive_plant() -> None:
     db = Session()
@@ -31,7 +33,9 @@ def archive_plant() -> None:
     print("Which one?")
     for p in filtered_plants:
         print(f"\t{p.id}")
-    id: int = int(Util.input("ID? ")) #TODO: Make better once we have multiple of same type
+    id: int = int(
+        Util.input("ID? ")
+    )  # TODO: Make better once we have multiple of same type
     filtered_plants = [p for p in filtered_plants if p.id == id]
 
     plant = filtered_plants[0]

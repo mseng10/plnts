@@ -2,6 +2,8 @@ from util.util import Util
 from models.plant import Plant
 from datetime import datetime
 from app import app, Session
+
+
 @app.cli.command("water")
 def water_plant():
     db = Session()

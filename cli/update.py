@@ -2,6 +2,7 @@ from models.plant import Plant
 from util.util import Util
 from app import app, Session
 
+
 @app.cli.command("update")
 def update_plant() -> None:
     db = Session()
@@ -42,6 +43,7 @@ def update_plant() -> None:
 
     print("Updating is over..")
     print()
+
 
 def __run_plant_update(self, plant: Plant) -> None:
     """Prompt the user for a field and value to update on the provided plant."""
