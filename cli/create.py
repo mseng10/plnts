@@ -1,62 +1,53 @@
-from cli.process import Process
 from models.plant import Plant
 from util.util import Util
 from datetime import datetime
+from app import app, Session
 
-from db import Session
+@app.cli.command("create")
+def create_plant() -> None:
+    db = Session()
 
+    query = db.query(Plant)
+    plants: list[Plant] = query.all()
+    print("Current Geni (lol):")
+    for p in query.all():
+        print(f"\t{p.genus}")
+    genus: str = Util.input("Genus? ")
 
-class Create(Process):
-    def __init__(self) -> None:
-        Process.__init__(
-            self, key="create", description="Create a plant and add it to the clan."
-        )
+    print("Current Types in Geni (lol):")
+    for p in plants:
+        if genus == p.genus:
+            print(f"\t{p.type}")
+    type: str = Util.input("Type? ")
 
-    def process(self) -> None:
-        super().process()
-        db = Session()
+    print("Current Names in Type:")
+    for p in plants:
+        if genus == p.genus and type == p.type:
+            print(f"\t{p.name}")
+    name: str = Util.input("Name? ")
 
-        query = db.query(Plant)
-        plants: list[Plant] = query.all()
-        print("Current Geni (lol):")
-        for p in query.all():
-            print(f"\t{p.genus}")
-        genus: str = self.input("Genus? ")
+    watering: int = int(Util.input("Water how often (days)? "))
+    cost: int = int(Util.input("Cost($)? "))
 
-        print("Current Types in Geni (lol):")
-        for p in plants:
-            if genus == p.genus:
-                print(f"\t{p.type}")
-        type: str = self.input("Type? ")
+    watered_on_str: str = input("Last Water (MM-DD-YYYY)? ")
+    if len(watered_on_str) == 0:
+        watered_on = datetime.now()
+    else:
+        month, day, year = map(int, watered_on_str.split("-"))
+        watered_on = datetime.date(year, month, day)
 
-        print("Current Names in Type:")
-        for p in plants:
-            if genus == p.genus and type == p.type:
-                print(f"\t{p.name}")
-        name: str = self.input("Name? ")
+    plant = Plant(
+        genus=genus,
+        name=name,
+        type=type,
+        watering=watering,
+        cost=cost,
+        watered_on=watered_on,
+    )
+    print(plant)
+    if not Util.confirm("Create? "):
+        # TODO : Edit capability's?
+        return
 
-        watering: int = int(self.input("Water how often (days)? "))
-        cost: int = int(self.input("Cost($)? "))
-
-        watered_on_str: str = input("Last Water (MM-DD-YYYY)? ")
-        if len(watered_on_str) == 0:
-            watered_on = datetime.now()
-        else:
-            month, day, year = map(int, watered_on_str.split("-"))
-            watered_on = datetime.date(year, month, day)
-
-        plant = Plant(
-            genus=genus,
-            name=name,
-            type=type,
-            watering=watering,
-            cost=cost,
-            watered_on=watered_on,
-        )
-        print(plant)
-        if not Util.confirm("Create? "):
-            # TODO : Edit capability's?
-            return
-
-        db.add(plant)
-        db.commit()
+    db.add(plant)
+    db.commit()
