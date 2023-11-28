@@ -6,6 +6,10 @@ from app import app, Session
 def archive_plant() -> None:
     db = Session()
     filtered_plants: list[Plant] = db.query(Plant).all()
+    if len(filtered_plants) == 0:
+        print("No plants need to be archived, weird.")
+        Util.system_exit()
+
     print("Current Geni (lol):")
     for p in filtered_plants:
         print(f"\t{p.genus}")

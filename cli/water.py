@@ -10,7 +10,7 @@ def water_plant():
 
     if len(plants) == 0:
         print("No plants need to be watered, yay.")
-        return
+        Util.system_exit()
 
     print("Plants that need water:")
     for p in plants:
