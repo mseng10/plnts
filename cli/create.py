@@ -1,8 +1,8 @@
 from models.plant import Plant
 from util.util import Util
 from datetime import datetime
-from app import app
-from app import Session
+from app import app, Session
+
 @app.cli.command("create")
 def create_plant() -> None:
     db = Session()

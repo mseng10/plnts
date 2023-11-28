@@ -24,4 +24,4 @@ Session = sessionmaker(bind=engine)
 init(autoreset=True)
 app = Flask(__name__)
 
-from cli import create, stats, update, water
+from cli import create, stats, update, water, archive
